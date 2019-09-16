@@ -1,4 +1,4 @@
-# client
+# Client
 ---
 
 ## Project setup
@@ -31,7 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ---
 
-# server
+# Server
 
 ## Project setup
 ```
