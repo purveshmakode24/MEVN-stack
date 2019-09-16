@@ -40,6 +40,6 @@ npm install
 
 ### Run Server
 ```
-npm run dev
+npm run dev (nodemon)
 ```
 
