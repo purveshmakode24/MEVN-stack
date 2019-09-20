@@ -1,5 +1,18 @@
 <template>
     <div class="container">
+        <!--errors-->
+        <ul v-if="errors && errors.length">
+            <!--if errors is an array, use this-->
+                <!--<li class="errors" v-for="error of errors">-->
+                    <!--{{error.message}}-->
+                <!--</li>-->
+
+            <!--for simple one time string error, use:-->
+                <li class="errors">
+                    {{errors}}
+                </li>
+        </ul>
+        <!--end-->
         <div class="form-group">
             <label>Name</label>
             <input class="form-control form-control-lg" type="text" v-model="Person.name"
@@ -15,11 +28,6 @@
             <input class="form-control form-control-lg" type="text" v-model="Person.salary"
                    placeholder="Enter Salary (in Rs.)" required/>
         </div>
-        <!--<ul v-if="errors && errors.length">-->
-        <!--<li v-for="error of errors">-->
-        <!--{{error.message}}-->
-        <!--</li>-->
-        <!--</ul>-->
         <button id="addPerson-btn" class="btn btn-secondary" @click="addToAPI">Submit</button>
     </div>
 
@@ -28,13 +36,14 @@
 
 <script>
     import axios from 'axios';
+    import * as router from "vue-router";
 
     export default {
         name: "AddPerson.vue",
         data() {
             return {
                 Person: {name: '', job: '', salary: ''},
-                // errors:[]
+                errors: '',
             }
         },
         methods: {
@@ -52,7 +61,7 @@
                     })
                     .catch((err) => {
                         console.log(err);
-                        // this.errors.push(err);
+                        this.errors = err.message;
                     })
             }
         }
@@ -64,7 +73,12 @@
         float: left;
     }
 
-    button#addPerson-btn{
+    button#addPerson-btn {
         float: left;
+    }
+
+    .errors {
+        background-color: lightcoral;
+        color: whitesmoke;
     }
 </style>
