@@ -18,11 +18,9 @@
     export default {
         name: 'operations',
         data() {
-            return {
-
-            }
+            return {}
         },
-        components:{
+        components: {
             AddPerson,
             // UpdatePerson,
         }
